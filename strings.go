@@ -1,6 +1,8 @@
 package strings
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"errors"
 	"time"
 )
@@ -21,4 +23,13 @@ func ToTime(s string) (time.Time, error) {
 		return date, errors.New("UTC format required")
 	}
 	return date, nil
+}
+
+func Rand(l int) (string, error) {
+	b := make([]byte, l)
+	_, err = rand.Read(b)
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(b), nil
 }
