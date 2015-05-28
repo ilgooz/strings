@@ -27,7 +27,7 @@ func ToTime(s string) (time.Time, error) {
 
 func Rand(l int) (string, error) {
 	b := make([]byte, l)
-	_, err = rand.Read(b)
+	_, err := rand.Read(b)
 	if err != nil {
 		return "", err
 	}
